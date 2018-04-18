@@ -1,11 +1,12 @@
 page {
-    background: blanchedalmond;
+  background: blanchedalmond;
 }
 .bt-date-picker swiper {
-    height: 500rpx;
+  height: 500rpx;
 }
+
 .bt-date-picker .date-label {
-    height: 100%;
+  height: 100%;
   width: 750rpx;
   background: #fff;
   padding: 50rpx 20rpx;
@@ -13,6 +14,7 @@ page {
   overflow: auto;
   zoom: 1;
 }
+
 .bt-date-picker .date-label .item {
   width: 16.65%;
   height: 80rpx;
@@ -23,19 +25,22 @@ page {
   text-align: center;
   position: relative;
 }
+
 .bt-date-picker .date-label .item.active {
-    color: #E74C75;
+  color: #e74c75;
 }
+
 .bt-date-picker .date-label .item.disable {
-    color: #CCCCCC;
+  color: #cccccc;
 }
+
 .bt-date-picker .date-label .item.active .selected-line {
-    bottom: 0;
-    position: absolute;
-    content: '';
-    display: block;
-    width: 100%;
-    border-bottom: 4rpx solid #E74C75;
+  bottom: 0;
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  border-bottom: 4rpx solid #e74c75;
 }
 
 .bt-date-picker .date-tabs {
@@ -56,8 +61,9 @@ page {
   color: #333333;
   text-align: center;
 }
+
 .bt-date-picker .date-tabs .item:last-child {
-    border-right: 1rpx solid #F6F6F6;
+  border-right: 1rpx solid #f6f6f6;
 }
 
 .bt-date-picker .date-tabs .item text {
@@ -68,113 +74,128 @@ page {
 .bt-date-picker .date-tabs .item.active {
   color: #e74c75;
 }
+
 .bt-date-picker .date-tabs .item-more {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 108rpx;
-}
-.bt-date-picker .date-tabs .item-more .icon-more {
-    width: 40rpx;
-    height: 40rpx;
-}
-.bt-date-picker .date-tabs .item-more .icon-more image {
-    width: 100%;
-    height: 100%;
-}
-.bt-date-picker .date-tabs .item-more text {
-    font-family: PingFangSC-Regular;
-    font-size: 20rpx;
-    color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 108rpx;
 }
 
+.bt-date-picker .date-tabs .item-more .icon-more {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.bt-date-picker .date-tabs .item-more .icon-more image {
+  width: 100%;
+  height: 100%;
+}
+
+.bt-date-picker .date-tabs .item-more text {
+  font-family: PingFangSC-Regular;
+  font-size: 20rpx;
+  color: #333333;
+}
 
 .bt-calendar {
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    transform: translate3d(0, 750rpx, 0);
-    opacity: 0;
-    transition: all 0.5s;
-    visibility: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate3d(0, 750rpx, 0);
+  opacity: 0;
+  transition: all 0.5s;
+  visibility: hidden;
 }
+
 .bt-calendar.show {
-    visibility: visible;
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
+
 .date-list {
-    overflow: auto;
-    zoom: 1;
-    background: #F6F6F6;
-    height: 100rpx;
-    width: 100%;
+  overflow: auto;
+  zoom: 1;
+  background: #f6f6f6;
+  height: 100rpx;
+  width: 100%;
 }
+
 .date-list .item {
-    width: 14.28%;
-    height: 100rpx;
-    line-height: 100rpx;
-    float: left;
-    text-align: center;
+  width: 14.28%;
+  height: 100rpx;
+  line-height: 100rpx;
+  float: left;
+  text-align: center;
 }
+
 .month-body {
-    flex: 1;
-    overflow: hidden;
+  flex: 1;
+  overflow: hidden;
 }
+
 .month-list {
-    width: 100%;
-    overflow: auto;
-    zoom: 1;
-    background: #ffffff;
-    box-sizing: border-box;
-    padding: 10rpx;
-    padding-top: 20rpx;
+  width: 100%;
+  overflow: auto;
+  zoom: 1;
+  background: #ffffff;
+  box-sizing: border-box;
+  padding: 10rpx;
+  padding-top: 20rpx;
 }
+
 .month-list .item {
-    width: 14.28%;
-    height: 80rpx;
-    float: left;
-    text-align: center;
-    margin: 10rpx 0;
-    padding: 0 8rpx;
-    box-sizing: border-box;
+  width: 14.28%;
+  height: 80rpx;
+  float: left;
+  text-align: center;
+  margin: 10rpx 0;
+  padding: 0 8rpx;
+  box-sizing: border-box;
 }
+
 .month-list .item .item-con {
-    height: 100%;
-    width: 100%;
-    border: 1rpx solid #cacaca;
-    line-height: 80rpx;
-    text-align: center;
-    font-family: PingFangSC-Regular;
-    font-size: 28rpx;
-    color: #333333;
+  height: 100%;
+  width: 100%;
+  border: 1rpx solid #cacaca;
+  line-height: 80rpx;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333333;
 }
+
 .month-list .item .item-con.none {
-    border: none;
+  border: none;
 }
 
 .month-list .item .item-con.disabled {
-    background: #F7F7F7;
-    color: #C7C7C7;
+  background: #f7f7f7;
+  color: #c7c7c7;
 }
+
 .month-list .item .item-con.today {
-    border: 1rpx solid #D03B5C;
-    color: #D03B5C;
+  border: 1rpx solid #d03b5c;
+  color: #d03b5c;
 }
+
 .month-list .item .item-con.selected {
-    background: #D03B5C;
-    color: #fff;
+  background: #d03b5c;
+  color: #fff;
 }
+
 .month-list .month-title {
-    font-family: PingFangSC-Regular;
-    font-size: 24rpx;
-    color: #222222;
-    width: 100%;
-    text-align: right;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #222222;
+  width: 100%;
+  text-align: right;
 }

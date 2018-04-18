@@ -59,6 +59,7 @@
         class="item {{index === currentDate ? 'active' : ''}}" 
         style="{{index === currentDate ? 'color: ' + themeColor + ';' : ''}}"
         wx:for="{{dateList}}"
+        wx:key="index"
         bindtap="changeDate"
         data-index="{{index}}"
         >

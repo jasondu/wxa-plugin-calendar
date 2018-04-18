@@ -1,8 +1,18 @@
 <date-picker 
-startTime="{{startTime}}" 
-endTime="{{endTime}}"
-unit="{{unit}}"
-reserveUnit="{{reserveUnit}}"
-unreserveTime="{{unreserveTime}}"
-themeColor="#1f78d1"
+    startTime="{{startTime}}" 
+    endTime="{{endTime}}"
+    unit="{{unit}}"
+    reserveUnit="{{reserveUnit}}"
+    unreserveTime="{{unreserveTime}}"
+    activedConst="{{activedConst}}"
+    disabledConst="{{disabledConst}}"
+    themeColor="#1f78d1"
+    bind:selectTime="onSelectTime"
 />
+
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">选择预约时间</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{startTimeText ? startTimeText : '请选择'}}</view>
+    </navigator>
+</view>

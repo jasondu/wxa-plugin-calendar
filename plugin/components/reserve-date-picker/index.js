@@ -23,6 +23,14 @@ Component({
             type: Number,
             value: 60,
         },
+        activedConst: { // 已经选中的常量标示
+            type: Number,
+            value: 101,
+        },
+        disabledConst: {// 不可选的常量标示
+            type: Number,
+            value: 102,
+        },
         unreserveTime: {    // 不可预约时间列表
             type: Array,
             value: [],
@@ -91,7 +99,7 @@ Component({
             for (let i = 0; i < len; i += 1) {
                 const item = this.unreserveTime[i];
                 if (+currentTime >= +item.startTime && +currentTime <= +item.endTime) {
-                    if (item.status === 101) {  // 已经被预约
+                    if (item.status === this.data.activedConst) {  // 已经被预约
                         result = {
                             active: true,
                             disabled: false,
@@ -118,9 +126,9 @@ Component({
         selectTime(e) {
             const { active, disabled, dateIndex, timeIndex } = e.currentTarget.dataset;
             if (active) {
-                wx.showToast({ title: '已经选择' });
+                wx.showToast({ icon: 'none', title: '已经选择' });
             } else if (disabled) {
-                wx.showToast({ title: '不可选' });
+                wx.showToast({ icon: 'none', title: '不可选' });
             } else {
                 const { reserveUnit, unit } = this.data;
                 const num = reserveUnit / unit;
@@ -132,23 +140,27 @@ Component({
                 });
                 // 深复制
                 const cloneTimes = [].concat(JSON.parse(JSON.stringify(this.data.timesList[dateIndex])));
-                for (let i = 0; i < num; i += 1) {
+                for (let i = 0; i <= num; i += 1) {
                     const item = cloneTimes[timeIndex + i];
                     if (!item || item.disabled) {
                         status = false;
                         break;
                     }
-                    timestamp = item.timestamp;
                     item.active = true;
                 }
                 if (status) {
+                    const startTime = cloneTimes[timeIndex].timestamp;
+                    const endTime = startTime + this.data.reserveUnit * 60 * 1000;
                     this.triggerEvent('selectTime', {
-                        selectTime: timestamp,
+                        startTime,
+                        endTime,
+                        startTimeText: moment(startTime).format('YYYY-MM-DD HH:mm:ss'),
+                        endTimeText: moment(endTime).format('YYYY-MM-DD HH:mm:ss'),
                     });
                     this.data.timesList[dateIndex] = cloneTimes;
                     this.setData({ timesList: this.data.timesList });
                 } else {
-                    wx.showToast({ title: '没有时间' });
+                    wx.showToast({ icon: 'none', title: '没有时间' });
                 }
             }
         },
@@ -219,14 +231,15 @@ Component({
                 const endTime = moment(`${dateList[i].allDate} ${this.data.endTime}`).valueOf();
                 while (+currentTime < +endTime) {
                     const current = moment(`${dateList[i].allDate} ${this.data.startTime}`).add(this.data.unit * index, 'minutes');
+                    currentTime = current.valueOf();
                     timeList.push({
                         time: current.format('HH:mm'),
                         timestamp: currentTime,
                         ...this.checkStatus(currentTime),
                     });
-                    currentTime = current.valueOf();
                     index += 1;
                 }
+                console.log('timeList:', timeList);
                 timesList.push(timeList);
             });
             this.setData({ dateList, timesList });

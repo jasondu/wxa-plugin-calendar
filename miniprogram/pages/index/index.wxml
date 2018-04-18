@@ -1,0 +1,8 @@
+<date-picker 
+startTime="{{startTime}}" 
+endTime="{{endTime}}"
+unit="{{unit}}"
+reserveUnit="{{reserveUnit}}"
+unreserveTime="{{unreserveTime}}"
+themeColor="#1f78d1"
+/>

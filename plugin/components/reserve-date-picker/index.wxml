@@ -1,0 +1,121 @@
+<wxs module="tools">
+    function dateTran(itemIndex, index) {
+        var weekTran = function (itemIndex) {
+            return ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][+itemIndex];
+        }
+        switch(index) {
+            case 0:
+                text = '今天';break;
+            case 1:
+                text = '明天';break;
+            case 2:
+                text = '后天';break;
+            default:
+                text = weekTran(itemIndex);break;
+        }
+        return text;
+    }
+    function getMonthClass(monthItem) {
+        if (!monthItem) {
+            return 'none';
+        } else {
+            if (monthItem.selected) {
+                return 'selected';
+            }
+            if (monthItem.status > 0) {
+                return '';
+            } else if (monthItem.status == 0) {
+                return 'today';
+            } else {
+                return 'disabled';
+            }
+        }
+    }
+    function getMonthStyle(monthItem, themeColor) {
+        if (!monthItem) {
+            return '';
+        } else {
+            if (monthItem.selected) {
+                return 'background: ' + themeColor + ';';
+            }
+            if (monthItem.status > 0) {
+                return '';
+            } else if (monthItem.status == 0) {
+                return 'border-color: ' + themeColor + ';color: ' + themeColor + ';';
+            } else {
+                return '';
+            }
+        }
+    }
+    module.exports = {
+        dateTran: dateTran,
+        getMonthClass: getMonthClass,
+        getMonthStyle: getMonthStyle
+    }
+</wxs>
+<view class="bt-date-picker">
+    <view class="date-tabs">
+        <view 
+        class="item {{index === currentDate ? 'active' : ''}}" 
+        style="{{index === currentDate ? 'color: ' + themeColor + ';' : ''}}"
+        wx:for="{{dateList}}"
+        bindtap="changeDate"
+        data-index="{{index}}"
+        >
+            <text>{{tools.dateTran(item.index, index)}}</text>
+            <text>{{item.date}}</text>
+        </view>
+        <view class="item-more" bindtap="toggleCalendar">
+            <view class="icon-more">
+                <image src="../../assets/icon/logo.png"/>
+            </view>
+            <text>更多</text>
+        </view>
+    </view>
+    <swiper bindchange="swiperChange" current="{{currentDate}}">
+        <block wx:for="{{timesList}}">
+            <swiper-item>
+                <scroll-view scroll-y class="date-label">
+                    <view 
+                    class="item {{timeItem.active ? 'active' : ''}} {{timeItem.disabled ? 'disable' : ''}}"
+                    style="{{timeItem.active ? 'color: ' + themeColor + ';' : ''}}"
+                    wx:for="{{item}}"
+                    wx:for-item="timeItem"
+                    wx:for-index="timeIndex"
+                    bindtap="selectTime"
+                    data-active="{{timeItem.active}}"
+                    data-disabled="{{timeItem.disabled}}"
+                    data-date-index="{{index}}"
+                    data-time-index="{{timeIndex}}"
+                    >{{timeItem.time}}<view class="selected-line" style="{{themeColor ? 'border-color: ' + themeColor + ';' : ''}}"></view></view>
+                </scroll-view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+
+<view class="bt-calendar {{showCalendar ? 'show' : ''}}">
+    <view class="date-list">
+        <view class="item">日</view>
+        <view class="item">一</view>
+        <view class="item">二</view>
+        <view class="item">三</view>
+        <view class="item">四</view>
+        <view class="item">五</view>
+        <view class="item">六</view>
+    </view>
+    <scroll-view scroll-y class="month-body">
+        <view class="month-list" wx:for="{{months}}">
+            <view class="month-title">{{item.title}}</view>
+            <view class="item" wx:for="{{item.month}}" wx:for-item="monthItem" wx:for-index="monthIndex">
+                <view 
+                class="item-con {{tools.getMonthClass(monthItem)}}" 
+                style="{{tools.getMonthStyle(monthItem, themeColor)}}"
+                bindtap="selectDate" 
+                data-month-index="{{index}}"
+                data-date-index="{{monthIndex}}"
+                data-date="{{monthItem ? monthItem.time : ''}}">{{monthItem ? monthItem.title : ''}}</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

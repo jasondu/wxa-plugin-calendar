@@ -72,6 +72,7 @@
             </view>
             <text>更多</text>
         </view>
+        <view class="active-line" style="width: {{(750 - 108) / dateList.length}}rpx;{{themeColor ? 'border-color: ' + themeColor + ';' : ''}}transform: translate3d({{100 * currentDate}}%, 0, 0);"></view>
     </view>
     <swiper bindchange="swiperChange" current="{{currentDate}}">
         <block wx:for="{{timesList}}">

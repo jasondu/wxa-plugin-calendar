@@ -239,7 +239,6 @@ Component({
                     });
                     index += 1;
                 }
-                console.log('timeList:', timeList);
                 timesList.push(timeList);
             });
             this.setData({ dateList, timesList });

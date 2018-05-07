@@ -1,6 +1,7 @@
 page {
   background: blanchedalmond;
 }
+
 .bt-date-picker swiper {
   height: 500rpx;
 }
@@ -44,6 +45,7 @@ page {
 }
 
 .bt-date-picker .date-tabs {
+  position: relative;
   display: flex;
   height: 92rpx;
   width: 100%;
@@ -56,10 +58,19 @@ page {
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 128rpx;
+  flex: 1;
   font-size: 24rpx;
   color: #333333;
   text-align: center;
+}
+
+.bt-date-picker .date-tabs .active-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom: 4rpx solid red;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.3s;
 }
 
 .bt-date-picker .date-tabs .item:last-child {

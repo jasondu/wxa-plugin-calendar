@@ -6,7 +6,7 @@
     unreserveTime="{{unreserveTime}}"
     activedConst="{{activedConst}}"
     disabledConst="{{disabledConst}}"
-    themeColor="#1f78d1"
+    themeColor=""
     bind:selectTime="onSelectTime"
 />
 

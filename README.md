@@ -9,9 +9,8 @@
 
 ## 代码片段链接
  
- **务必填写已经添加该插件的APPID**
+ **务必填写已经添加该插件的APPID**         
 wechatide://minicode/HbH9Yim56XZy
-<a href="wechatide://minicode/HbH9Yim56XZy">wechatide://minicode/HbH9Yim56XZy</a>
 
 ## 插件效果
 

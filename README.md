@@ -10,10 +10,9 @@
 ## 代码片段链接
  
  **务必填写已经添加该插件的APPID**
-[wechatide://minicode/HbH9Yim56XZy](wechatide://minicode/HbH9Yim56XZy "")
-[示例](http://equation85.github.com "可选的title")
+wechatide://minicode/HbH9Yim56XZy
+<a href="wechatide://minicode/HbH9Yim56XZy">wechatide://minicode/HbH9Yim56XZy</a>
 
-wechatide://minicode/HbH9Yim56XZy 
 ## 插件效果
 
 <img width="300" src="https://github.com/jasondu/wxa-plugin-calendar/blob/master/demo.gif"></img>
